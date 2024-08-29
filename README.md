@@ -4,10 +4,8 @@ Build the RPLIDAR C1 package for ROS2 in an Ubuntu Jammy arm64v8 docker
 # OVERVIEW 
 
 The goal of this repository is to obtain a RPLIDAR C1 Package built in an ARM64V8 platform (the same of Raspberry PI 4 with Ubuntu Jammy 64 bits) but executed in a much more performing environment:
-* Intel I5/I9
-* or AMD Ryzen 5/7/9
-* or anyway the best PC you have
-* OS can be Windows 10/11 or Ubuntu or other Linux distributions that can run Docker
+* CPU: Intel I5/I9 or AMD Ryzen 5/7/9 or anyway the best PC you have
+* OS:Windows 10 or Windoqs 11 or Ubuntu or other Linux distributions that can run Docker
 * Docker container with Ubuntu 22.04 
 
 # INSTRUCTIONS
@@ -17,7 +15,7 @@ The goal of this repository is to obtain a RPLIDAR C1 Package built in an ARM64V
 2) Create the following file "arm64_dockerfile" in a new directory of your choice
 
   ```
-  FROM arm64v8/ubuntu:jammy AS base
+  FROM arm64v8/ubuntu:jammy
   
   # update repositories only once
   RUN apt-get update
@@ -65,16 +63,17 @@ The goal of this repository is to obtain a RPLIDAR C1 Package built in an ARM64V
   SHELL ["/bin/bash", "-c"]
   RUN echo "source /opt/ros/humble/setup.bash" >> ~/.bashrc
   
-  # Final stage
-  FROM base AS ros2-humble-arm64   
+  
+```
 
 3)  Build the container ros2-humble-arm64 for an arm64v8 platform reading the dockerfile arm64_dockerfile
 
-```
-docker build -t ros2-humble-arm64 --platform linux/arm64 -f  arm64_dockerfile .
-```
+  ```
+  docker build -t ros2-humble-arm64 --platform linux/arm64 -f  arm64_dockerfile .
+  ```
 
  The output image will be ros2-humble-arm64
+
  This step can take a few minutes (Around 10 minutes on my Intel I9 12th gen).
 
  You can check that the ros2-humble-arm64 image really exists with 
@@ -85,9 +84,16 @@ docker build -t ros2-humble-arm64 --platform linux/arm64 -f  arm64_dockerfile .
 
 which should list something like this: 
 
+```
 REPOSITORY            TAG      IMAGE ID       CREATED           SIZE
 ros2-humble-arm64    latest    b9499245c368   35 seconds ago    980MB
-4) Install the qemu for docker to enable cross platform emulation as you most likely have an amd64 or x86_64 in your performing PC
+```
+ 
+4) Install the qemu for docker to enable cross platform emulation as you most likely have an amd64 / x86_64 in your performing PC
 
+```
 docker run --rm --privileged multiarch/qemu-user-static --reset -p yes
+```
+ 
+
 ...  other steps ...
