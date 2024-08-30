@@ -18,13 +18,17 @@ The goal of this repository is to obtain a RPLIDAR C1 Package built in an ARM64V
   git clone https://github.com/guido57/RPLIDAR_C1_for_Raspberry_PI_4
   ```
 
+3) Install the qemu for docker to enable cross platform emulation as you most likely have an amd64 / x86_64 in your performing PC
+
+```
+docker run --rm --privileged multiarch/qemu-user-static --reset -p yes
+```
+ 
 4)  Build the container ros2-humble-arm64 for an arm64v8 platform reading the dockerfile arm64_dockerfile
 
   ```
   docker build -t ros2-humble-arm64 --platform linux/arm64 -f  arm64_dockerfile .
   ```
-
- The output image will be ros2-humble-arm64
 
  This step can take a few minutes (Around 10 minutes on my Intel I9 12th gen).
 
@@ -40,12 +44,7 @@ which should list something like this:
 REPOSITORY            TAG      IMAGE ID       CREATED           SIZE
 ros2-humble-arm64    latest    b9499245c368   35 seconds ago    980MB
 ```
- 
-4) Install the qemu for docker to enable cross platform emulation as you most likely have an amd64 / x86_64 in your performing PC
+5) Run the just created docker image 
 
-```
-docker run --rm --privileged multiarch/qemu-user-static --reset -p yes
-```
- 
 
-...  other steps ...
+
