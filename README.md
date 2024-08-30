@@ -49,17 +49,17 @@ which should list something like this:
 REPOSITORY            TAG      IMAGE ID       CREATED           SIZE
 ros2-humble-arm64    latest    b9499245c368   35 seconds ago    980MB
 ```
-6) Run the just created docker image
+6) For testing, you can optionally run the just created docker image
    ```
    docker run -it --network host --platform linux/arm64 ros2-humble-arm64 /bin/bash
    ```
-When the prompt appears, like this:
+When the prompt appears, as here:
 
 ```
 root@guido-Neptune-series-i9:/home/robot/RPLIDAR_C1_ws#
 ```
 
-it means you have succesfully created the docker image.
+it means you are running your arm64v8 docker image inside you amd64 machine.
 
 
 
