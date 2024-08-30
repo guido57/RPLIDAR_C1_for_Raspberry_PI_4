@@ -3,7 +3,7 @@ Build the RPLIDAR C1 package for ROS2 in an Ubuntu Jammy arm64v8 docker
 
 # OVERVIEW 
 
-The goal of this repository is to obtain a RPLIDAR C1 Package built in an ARM64V8 platform (the same of Raspberry PI 4 with Ubuntu Jammy 64 bits) but executed in a much more performing environment:
+The goal of this repository is to obtain a RPLIDAR C1 Package built in an ARM64V8 platform (the same of Raspberry PI 4 with Ubuntu Jammy 64 bits) but executed in a much more performing environment. For instance:
 * CPU: Intel I5/I9 or AMD Ryzen 5/7/9 or anyway the best PC you have
 * OS:Windows 10 or Windoqs 11 or Ubuntu or other Linux distributions that can run Docker
 * Docker container with Ubuntu 22.04 
