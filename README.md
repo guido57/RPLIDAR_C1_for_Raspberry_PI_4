@@ -17,15 +17,19 @@ The goal of this repository is to obtain a RPLIDAR C1 Package built in an ARM64V
   ```
   git clone https://github.com/guido57/RPLIDAR_C1_for_Raspberry_PI_4
   ```
-3) Change the destination directory you'll have in the Raspberry PI 4 at line 
+3) Modify arm64_dockerfile setting, at line 55, the destination directory where you want to place this package in the Raspberry PI
 
-3) Install the qemu for docker to enable cross platform emulation as you most likely have an amd64 / x86_64 in your performing PC
+```
+ENV RPI4_DIR=/home/robot/RPLIDAR_C1_ws/
+```
+
+4) Install the qemu for docker to enable cross platform emulation as you most likely have an amd64 / x86_64 in your performing PC
 
 ```
 docker run --rm --privileged multiarch/qemu-user-static --reset -p yes
 ```
  
-4)  Build the container ros2-humble-arm64 for an arm64v8 platform reading the dockerfile arm64_dockerfile
+5)  Build the container ros2-humble-arm64 for an arm64v8 platform reading the dockerfile arm64_dockerfile
 
   ```
   docker build -t ros2-humble-arm64 --platform linux/arm64 -f  arm64_dockerfile .
@@ -45,11 +49,17 @@ which should list something like this:
 REPOSITORY            TAG      IMAGE ID       CREATED           SIZE
 ros2-humble-arm64    latest    b9499245c368   35 seconds ago    980MB
 ```
-5) Run the just created docker image
+6) Run the just created docker image
    ```
    docker run -it --network host --platform linux/arm64 ros2-humble-arm64 /bin/bash
    ```
-When the prompt appears, it means you are 
+When the prompt appears, like this:
+
+```
+root@guido-Neptune-series-i9:/home/robot/RPLIDAR_C1_ws#
+```
+
+it means you are succesfully created the docker image.
 
 
 

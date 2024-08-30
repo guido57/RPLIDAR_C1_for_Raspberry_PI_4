@@ -52,13 +52,14 @@ RUN apt-get install -y \
 SHELL ["/bin/bash", "-c"]
 RUN echo "source /opt/ros/humble/setup.bash" >> ~/.bashrc
 
+ENV RPI4_DIR=/home/robot/RPLIDAR_C1_ws/
 
 # Create the colcon structure
-RUN mkdir -p /home/robot/RPLIDAR_C1_ws/src/  &&    \
-    cd /home/robot/RPLIDAR_C1_ws/src/        &&    \
+RUN mkdir -p $RPI4_DIR/src/  &&    \
+    cd $RPI4_DIR/src/        &&    \
     git clone https://github.com/Slamtec/sllidar_ros2.git
   
 # Build sllidar_ros2 package
-RUN cd /home/robot/RPLIDAR_C1_ws/             &&   \       
+RUN cd $RPI4_DIR            &&   \       
     source /opt/ros/humble/setup.bash         &&   \
     colcon build --symlink-install
