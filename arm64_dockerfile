@@ -1,3 +1,9 @@
+# build with: 
+#   docker build -t ros2-humble-arm64 --platform linux/arm64 -f  arm64_dockerfile .
+
+# run with:
+#   docker run -it --network host --platform linux/arm64 ros2-humble-arm64 /bin/bash
+
 FROM arm64v8/ubuntu:jammy
 
 # update repositories only once
@@ -47,3 +53,12 @@ SHELL ["/bin/bash", "-c"]
 RUN echo "source /opt/ros/humble/setup.bash" >> ~/.bashrc
 
 
+# Create the colcon structure
+RUN mkdir -p /home/robot/RPLIDAR_C1_ws/src/  &&    \
+    cd /home/robot/RPLIDAR_C1_ws/src/        &&    \
+    git clone https://github.com/Slamtec/sllidar_ros2.git
+  
+# Build sllidar_ros2 package
+RUN cd /home/robot/RPLIDAR_C1_ws/             &&   \       
+    source /opt/ros/humble/setup.bash         &&   \
+    colcon build --symlink-install
