@@ -3,14 +3,19 @@ Build the RPLIDAR C1 package for ROS2 in an Ubuntu Jammy arm64v8 docker
 
 # OVERVIEW 
 
-The goal of this repository is to obtain a RPLIDAR C1 Package built in an ARM64V8 platform (the same of Raspberry PI 4 with Ubuntu Jammy 64 bits) but executed in a much more performing environment. For instance:
+The goal of this repository is to obtain a RPLIDAR C1 Package for ROS2 to be simply copied to your Raspberry PI 4.
+
+### Why? Because your Raspberry PI 4 1GB RAM (as mine) hasn't enough memory to build the package directly. 
+
+Therefore with Docker you build the package in a much more performing environment. For instance:
 * CPU: Intel I5/I9 or AMD Ryzen 5/7/9 or anyway the best PC you have
-* OS:Windows 10 or Windoqs 11 or Ubuntu or other Linux distributions that can run Docker
-* Docker container with Ubuntu 22.04 
+* OS:Windows 10 or Windows 11 or Ubuntu or other Linux distributions that can run Docker
+* Docker container with Ubuntu 22.04 and platform ARM64V8
+
 
 # INSTRUCTIONS
 
-## 1) Install docker in your performing PC 
+## 1) Install Docker in your performing PC 
 https://docs.docker.com/engine/install/
 
 ## 2) Download the file "arm64_dockerfile"
@@ -18,7 +23,7 @@ https://docs.docker.com/engine/install/
   ```
   git clone https://github.com/guido57/RPLIDAR_C1_for_Raspberry_PI_4
   ```
-## 3) Modify arm64_dockerfile setting, at line 55, the destination directory where you want to place this package in the Raspberry PI
+## 3) Modify the environment constant RPI4_DIR, at line 55, with the destination directory where you want to place this package in the Raspberry PI
 
 ```
 ENV RPI4_DIR=/home/robot/RPLIDAR_C1_ws/
