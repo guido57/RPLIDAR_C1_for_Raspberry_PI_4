@@ -23,7 +23,9 @@ https://docs.docker.com/engine/install/
   ```
   git clone https://github.com/guido57/RPLIDAR_C1_for_Raspberry_PI_4
   ```
-## 3) Modify the environment constant RPI4_DIR, at line 55, with the destination directory where you want to place this package in the Raspberry PI
+## 3) Modify the environment constant RPI4_DIR.
+
+Set, at line 55, the destination directory where you want to place this package in the Raspberry PI
 
 ```
 ENV RPI4_DIR=/home/robot/RPLIDAR_C1_ws/
