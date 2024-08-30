@@ -59,7 +59,7 @@ When the prompt appears, like this:
 root@guido-Neptune-series-i9:/home/robot/RPLIDAR_C1_ws#
 ```
 
-it means you are succesfully created the docker image.
+it means you have succesfully created the docker image.
 
 
 
